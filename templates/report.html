@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Report an Item | Lost & Found{% endblock %} 
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/report.css') }}">
+{% endblock %}
+
+{% block content %}
+  <h1>Report a Lost or Found Item</h1>
+
+  <form method="POST" enctype="multipart/form-data">
+      <label for="report_type">Report type</label>
+      <select id="report_type" name="report_type" required>
+          <option value="">Choose one</option>
+          <option value="lost">I lost an item</option>
+          <option value="found">I found an item</option>
+      </select>
+      <br />
+
+      <label for="item_name">Item name</label>
+      <input type="text" id="item_name" name="item_name" required />
+      <br />
+
+      <label for="category">Category</label>
+      <select id="category" name="category" required>
+          <option value="">Choose a category</option>
+          <option value="ID Card">ID Card</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Bag">Bag</option>
+          <option value="Other">Other</option>
+      </select>
+      <br />
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description"></textarea>
+      <br />
+
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" required />
+      <br />
+
+      <label for="item_date">Date lost or found</label>
+      <input type="date" id="item_date" name="item_date" />
+      <br />
+
+      <label for="photo">Photo (optional)</label>
+      <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.webp" />
+      <br />
+
+      <label for="contact_info">Contact information</label>
+      <input type="text" id="contact_info" name="contact_info" required />
+      <br />
+
+      <button type="submit">Post Item</button>
+  </form>
+{% endblock %}

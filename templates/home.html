@@ -1,7 +1,28 @@
 {% extends "base.html" %} {% block title %}Home | Lost & Found{% endblock %} {%
-block content %}
-<p>Item lost?</p>
-<button>Find</button>
-<p>Found lost item?</p>
-<button>Lost</button>
+block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>
+{% endblock %} {% block content %}
+<main class="home-page">
+  <h1>Campus Lost & Found</h1>
+  <p>
+    Lost something or found an item on campus? Post it or browse the listings.
+  </p>
+
+  <section class="home-actions">
+    <div>
+      <h2>Looking for an item?</h2>
+      <p>Browse lost and found reports to see if someone posted about it.</p>
+      <a href="{{ url_for('list_items.list_items') }}">Find an Item</a>
+    </div>
+
+    <div>
+      <h2>Have an item to report?</h2>
+      <p>Post a lost or found item so others can see the details.</p>
+      <a href="{{ url_for('report.report') }}">Report an Item</a>
+    </div>
+  </section>
+</main>
 {% endblock %}

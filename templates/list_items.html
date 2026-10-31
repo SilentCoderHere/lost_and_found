@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}All Reports | Lost & Found{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/list_items.css') }}">
+{% endblock %}
+
+{% block content %}
+  <h1>All Reports</h1>
+
+  {% for report in reports %}
+    <article>
+      <h2>{{ report.item_name }}</h2>
+      <p>Type: {{ report.report_type }}</p>
+      <p>Category: {{ report.category }}</p>
+      <p>Location: {{ report.location }}</p>
+      <p>Status: {{ report.status }}</p>
+      {% if report.photo_path %}
+        <img src="{{ url_for('static', filename=report.photo_path) }}" width="300"
+  height="200">
+      {% endif %}
+    </article>
+  {% else %}
+    <p>No report</p>
+  {% endfor %}
+{% endblock %}

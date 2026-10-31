@@ -46,3 +46,7 @@ junit.xml
 # OS files
 .DS_Store
 Thumbs.db
+
+# Custom
+instance/
+uploads/
